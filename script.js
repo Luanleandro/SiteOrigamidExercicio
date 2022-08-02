@@ -1,9 +1,20 @@
 const btnMobile = document.querySelector("#btn-mobile");
 const menuItems = document.querySelectorAll("#menu a[href^='#']");
 const nav = document.querySelector("#nav");
+const titulo = document.querySelector("h1");
 
 const handleToggleClick = () => {
   nav.classList.toggle("active");
+};
+
+const typeWrite = (elemento) => {
+  const textoArray = elemento.innerHTML.split("");
+  elemento.innerHTML = "";
+  textoArray.forEach((letra, index) => {
+    setTimeout(() => {
+      elemento.innerHTML += letra;
+    }, 75 * index);
+  });
 };
 
 const scrollToIdOnClick = (event) => {
@@ -19,7 +30,7 @@ const scrollToIdOnClick = (event) => {
   nav.classList.toggle("active");
 };
 
-console.log([...menuItems]);
+typeWrite(titulo);
 
 menuItems.forEach((item) => {
   item.addEventListener("click", scrollToIdOnClick);
